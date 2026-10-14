@@ -1,0 +1,100 @@
+If you use , FastAPI will know it has to get the files from the correct part of the body.
+Then create class attributes with fixed values, which will be the available valid values: /// tip If you are wondering, "AlexNet", "ResNet", and "LeNet" are just names of Machine Learning models .
+Order matters When creating path operations , you can find situations where you have a fixed path.
+This OpenAPI-specific goes in another section in the OpenAPI specification.
+This is similar to the 200 HTTP status codes (from 200 to 299).
+Run the development server using the command .
+If for some reason you need to disable automatic conversion of underscores to hyphens, set the parameter of to : /// warning Before setting to , bear in mind that some HTTP proxies and servers disallow the usage of headers with underscores.
+But if we use the same model for another path operation , we could be sending our user's passwords to every client.
+Use You can configure it in your FastAPI application using the .
+But FastAPI will handle it, give you the correct data in your function, and validate and document the correct schema in the path operation .
+All the same processes that apply to path parameters also apply to query parameters: Editor support (obviously) Data "parsing" Data validation Automatic documentation Defaults As query parameters are not a fixed part of a path, they can be optional and can have default values.
+For example, a Python : This will make be a list, although it doesn't declare the type of the elements of the list.
+So: ...makes the parameter optional, with a default value of , the same as: But the version declares it explicitly as being a query parameter.
+Invalid Return Type Annotations But when you return some other arbitrary object that is not a valid Pydantic type (e.g.
+So, all these are different origins: Even if they are all in , they use different protocols or ports, so, they are different "origins".
+And you can also declare numeric validations: : reater han : reater than or qual : ess han : ess than or qual /// note , , and other classes you will see later are subclasses of a common class.
+And Swagger UI has supported this particular field for a while.
+That's why in this example we have to declare it in the parameter.
+FastAPI provides it as a convenience for you, the developer.
+It uses a "spooled" file: A file stored in memory up to a maximum size limit, and after passing this limit it will be stored on disk.
+That's probably the main visible advantage of FastAPI compared to alternative frameworks (apart from the raw performance).
+We wanted to annotate the function with one type , but we wanted to be able to return from the function something that actually includes more data .
+SQLModel is built on top of SQLAlchemy and Pydantic.
+Here we use the dependency (a ) to add the new to the instance, commit the changes to the database, refresh the data in the , and then return it.
+You can then further modify the before returning it.
+Python will complain if you put a value with a "default" before a value that doesn't have a "default".
+It is commonly used after creating a new record in the database.
+Poor cookie banners with all their effort to get your consent for the API to reject it .
+FastAPI app file Let's say you have a file structure as described in Bigger Applications: In the file you have your FastAPI app: Testing file Then you could have a file with your tests.
+Write simple statements with the standard Python expressions that you need to check (again, standard ).
+You don't need to have a single data model per entity if that entity must be able to have different "states".
+Path Operation Configuration There are several parameters that you can pass to your path operation decorator to configure it.
+To pass headers , use a in the parameter.
+So, the response to that URL would be: /// tip To declare a query parameter with a type of , like in the example above, you need to explicitly use , otherwise it would be interpreted as a request body.
+Create metadata for tags Let's try that in an example with tags for and .
+So, instead of adding all that to each path operation , we can add it to the .
+You don't have to do anything about it, it works out of the box.
+This is not a limitation of FastAPI , it's part of the HTTP protocol.
+Operation "Operation" here refers to one of the HTTP "methods".
+In this case, you would accept any as long as it has keys with values: /// tip Keep in mind that JSON only supports as keys.
+With this, if a file is found, it will be used as the fallback automatically.
+Middleware You can add middleware to FastAPI applications.
+For that, use : FastAPI uses this fallback only for and requests that explicitly accept HTML with or , as browser navigation requests normally do.
+For example, if you declare a parameter of type , it will be read from the JSON body .
+After installing FastAPI in your project, you can install the skill with Library Skills : /// note is an alias for .
+Instead, use the actual default value of the function parameter.
+Notice that the path parameter is declared to be an integer.
+So, you can declare deeply nested JSON "objects" with specific attribute names, types and validations.
+Because of that, versions of FastAPI previous to 0.99.0 still used versions of OpenAPI lower than 3.1.0.
+Your API almost always has to send a response body.
+Check the Docs You can see the query parameters in the docs UI at : Forbid Extra Query Parameters In some special use cases (probably not very common), you might want to restrict the query parameters that you want to receive.
+You can also declare singular values to be received as part of the body.
+This allows you to use directly without complications.
+And the calls to the client are also normal calls, not using .
+This is designed to be lightweight and to avoid adding overhead to each request.
+You can define those cases using a list in the type declaration.
+In these cases, it could make sense to store the tags in an .
+But in case you needed it for an advanced scenario, you can add custom headers: Install custom exception handlers You can add custom exception handlers with the same exception utilities from Starlette.
+Extended FastAPI app file Let's continue with the same file structure as before: Let's say that now the file with your FastAPI app has some other path operations .
+You can read more about this in the Advanced User Guide.
+FastAPI Data Filtering Now, for FastAPI, it will see the return type and make sure that what you return includes only the fields that are declared in the type.
+You can use the convenience variables from .
+All these path operations will have the list of evaluated/executed before them.
+Debugging You can connect the debugger in your editor, for example with Visual Studio Code or PyCharm.
+In this case, the task function will write to a file (simulating sending an email).
+In this case, you can use : Recap Use multiple Pydantic models and inherit freely for each case.
+Handling Errors There are many situations in which you need to report an error to a client that is using your API.
+Otherwise, if there is an file, missing browser navigation paths serve , which is what many frontend apps with client-side routing expect.
+This way you and your clients can be certain that they will receive the data and the data shape expected.
+In requests and responses will be treated as .
+This will be the main file in your application that ties everything together.
+One of: ...and the more exotic ones: In the HTTP protocol, you can communicate to each path using one (or more) of these "methods".
+None of , and can be set to if is set to .
+For production you would probably use a migration script that runs before you start your app.
+So, you can use as you normally would in Python code, instead of needing to capitalize the first letters as or something similar.
+You could easily add any of those alternatives to your application built with FastAPI .
+You can override these exception handlers with your own.
+Bigger Applications - Multiple Files If you are building an application or a web API, it's rarely the case that you can put everything in a single file.
+But when the form includes files, it is encoded as .
+The gives it a name that can be used internally by FastAPI .
+For example: This results in the following execution order: Request : MiddlewareB → MiddlewareA → route Response : route → MiddlewareA → MiddlewareB This stacking behavior ensures that middlewares are executed in a predictable and controllable order.
+For example, to set Swagger UI to be served at and disable ReDoc:
+Define a path operation decorator The tells FastAPI that the function right below is in charge of handling requests that go to: the path using a get operation /// note Info That syntax in Python is called a "decorator".
+I'll leave it inheriting just for consistency, but this is not necessary.
+Use to return only the values explicitly set.
+Request Files You can define files to be uploaded by the client using .
+So, if we create a Pydantic object like: and then we call: we now have a with the data in the variable (it's a instead of a Pydantic model object).
+When something goes wrong at some part in your application code, or server, it will automatically return one of these status codes.
+If you want to: declare the query parameter without a nor any default value declare the path parameter using have them in a different order not use ...Python has a little special syntax for that.
+Responses with these status codes cannot have a body.
+Import First import : Declare parameters Then declare the header parameters using the same structure as with , and .
+The same with , it's another submodule: .
+Here, with , will need to be an integer number " reater than or qual" to .
+OpenAPI URL By default, the OpenAPI schema is served at .
+But it actually comes directly from Starlette.
+There's also a subdirectory with another file , so it's another "Python subpackage": .
+In this case, the parameter that applies to strings: This will validate the data, show a clear error when the data is not valid, and document the parameter in the OpenAPI schema path operation .
+As these keys may not necessarily be part of the OpenAPI specification, some OpenAPI tools, for example the OpenAPI validator, may not work with your generated schema.
+And it has an empty file , so it is a "Python package" (a collection of "Python modules"): .
+All the data conversion, validation, documentation, etc.

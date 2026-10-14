@@ -7,3 +7,11 @@ One entry per day: what I built, what surprised me, what I'd explain in an inter
 - Documents collected:
 - Something I learned:
 - Question I still have:
+
+## Day 2: embeddings and similarity
+- An embedding is: <your own words, 1 sentence>
+- Cosine similarity measures: <your own words>
+- Queries get a prefix and documents don't because: <your own words>
+- Experiment results: <what worked, what failed, with 1-2 example queries and their top scores>
+- A surprise: 
+- Question for later:

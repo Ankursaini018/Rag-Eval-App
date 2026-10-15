@@ -1,4 +1,5 @@
 """Turn documents into pages: one record per page, shaped {"doc": ..., "page": ..., "text": ...}."""
+import json
 import re
 from collections import Counter
 from pathlib import Path
@@ -79,3 +80,37 @@ def normalize_pages(pages: list[dict], strip_headers: bool = False) -> list[dict
     if strip_headers:
         texts = strip_repeated_lines(texts)
     return [{**p, "text": clean_text(t)} for p, t in zip(pages, texts)]
+
+def parse_document(path: str | Path) -> list[dict]:
+    """Pick the right parser for a file, then clean the result."""
+    path = Path(path)
+    suffix = path.suffix.lower()
+    if suffix == ".pdf":
+        return normalize_pages(parse_pdf(path), strip_headers=True)   # only PDFs have page headers
+    if suffix in (".html", ".htm"):
+        return normalize_pages(parse_html(path))
+    if suffix in (".md", ".markdown", ".txt"):
+        return normalize_pages(parse_text(path))
+    return []  # unsupported type: skipped
+
+
+def parse_folder(folder: str | Path) -> list[dict]:
+    pages = []
+    for path in sorted(Path(folder).rglob("*")):
+        if path.is_file():
+            pages.extend(parse_document(path))
+    return pages
+
+
+def write_jsonl(rows: list[dict], path: str | Path) -> None:
+    """JSONL = one JSON object per line. Easy to append to, stream, and diff in git."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+
+def read_jsonl(path: str | Path) -> list[dict]:
+    with Path(path).open(encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]

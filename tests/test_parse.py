@@ -1,4 +1,4 @@
-from rag.parse import clean_text, normalize_pages, parse_html, parse_text, strip_repeated_lines
+from rag.parse import clean_text, normalize_pages, parse_html, parse_text, strip_repeated_lines, parse_document, read_jsonl, write_jsonl
 
 
 def test_parse_text_sections_and_numbering(tmp_path):
@@ -45,3 +45,15 @@ def test_strip_needs_enough_pages():
 def test_normalize_keeps_other_fields():
     out = normalize_pages([{"doc": "d", "page": 3, "text": "a  b"}])
     assert out == [{"doc": "d", "page": 3, "text": "a b"}]
+
+
+def test_jsonl_roundtrip(tmp_path):
+    rows = [{"doc": "d", "page": 1, "text": "héllo"}]
+    write_jsonl(rows, tmp_path / "x" / "p.jsonl")
+    assert read_jsonl(tmp_path / "x" / "p.jsonl") == rows
+
+
+def test_unknown_type_skipped(tmp_path):
+    f = tmp_path / "x.bin"
+    f.write_bytes(b"\x00")
+    assert parse_document(f) == []

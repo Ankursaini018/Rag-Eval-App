@@ -1,6 +1,6 @@
 from reportlab.pdfgen import canvas
 
-from rag.parse import parse_pdf
+from rag.parse import parse_document, parse_pdf
 
 BODIES = ["Refunds are issued within ten days.", "Shipping is free above fifty dollars.",
           "Support answers email within a day.", "The shop opens at nine every morning.",
@@ -23,3 +23,11 @@ def test_pdf_page_numbers_and_text(tmp_path):
     pages = parse_pdf(f)
     assert [p["page"] for p in pages] == [1, 2, 3, 4, 5, 6]
     assert pages[2]["doc"] == "handbook.pdf" and BODIES[2] in pages[2]["text"]
+
+
+def test_pdf_headers_and_footers_removed(tmp_path):
+    f = tmp_path / "handbook.pdf"
+    make_pdf(f)
+    pages = parse_document(f)
+    assert all("ACME" not in p["text"] and "Page" not in p["text"] for p in pages)
+    assert [p["text"] for p in pages] == BODIES

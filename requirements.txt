@@ -1,3 +1,6 @@
 numpy
 sentence-transformers
 pytest
+pypdf
+beautifulsoup4
+reportlab

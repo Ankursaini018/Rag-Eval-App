@@ -15,3 +15,12 @@ One entry per day: what I built, what surprised me, what I'd explain in an inter
 - Experiment results: <what worked, what failed, with 1-2 example queries and their top scores>
 - A surprise: 
 - Question for later:
+
+## Day 3: parsing
+- Why page numbers matter: <your words>
+- Pages parsed: <N pages from M documents>. Pages flagged by check_pages.py: <N>
+- Problems found (real examples from MY documents):
+  1. <e.g. "doc X page 4 had hyphen-split words"> -> fixed by <...>
+  2. <e.g. "doc Y is a scan with no text"> -> removed / needs OCR
+- Surprise: 
+- Why headers/footers hurt search: <your words>

@@ -1,4 +1,4 @@
-from rag.parse import parse_html, parse_text
+from rag.parse import clean_text, normalize_pages, parse_html, parse_text, strip_repeated_lines
 
 
 def test_parse_text_sections_and_numbering(tmp_path):
@@ -16,3 +16,32 @@ def test_parse_html_drops_menus_and_scripts(tmp_path):
                  "<footer>FOOT</footer></body></html>")
     text = parse_html(f)[0]["text"]
     assert "Real text." in text and "MENU" not in text and "var x" not in text and "FOOT" not in text
+
+
+def test_clean_text():
+    assert clean_text("inter-\nnational  law\u00ad") == "international law"
+    assert clean_text("a\n\n\n\n\nb") == "a\n\nb"
+    assert clean_text("x\n    keep indent") == "x\n    keep indent"
+    assert clean_text("well-\nKnown") == "well-\nKnown"          # real hyphen before a capital is kept
+
+
+def test_strip_repeated_lines():
+    bodies = ["refunds take ten days", "shipping is free", "contact support", "opening hours", "returns policy", "gift cards"]
+    pages = [f"ACME Corp Handbook\n{b}\nPage {i}" for i, b in enumerate(bodies, start=1)]
+    assert strip_repeated_lines(pages) == bodies
+
+
+def test_numbered_body_lines_survive():
+    # 'Step N of the process' differs on every page (digit in the middle), so it is body text, not a header
+    pages = [f"Step {i} of the process\nunique {w}" for i, w in enumerate("abcdef", start=1)]
+    assert strip_repeated_lines(pages) == pages
+
+
+def test_strip_needs_enough_pages():
+    pages = ["Header\nA", "Header\nB"]
+    assert strip_repeated_lines(pages) == pages
+
+
+def test_normalize_keeps_other_fields():
+    out = normalize_pages([{"doc": "d", "page": 3, "text": "a  b"}])
+    assert out == [{"doc": "d", "page": 3, "text": "a b"}]

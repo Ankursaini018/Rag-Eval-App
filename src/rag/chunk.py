@@ -37,3 +37,23 @@ def chunk_pages(pages: list[dict], size: int = 500, overlap: int = 50, tokenizer
     for page in pages:
         chunks.extend(chunk_page(page, size, overlap, tokenizer))
     return chunks
+
+def chunk_stats(chunks: list[dict], size: int = 500) -> dict:
+    """Numbers that tell you whether chunking behaved."""
+    if not chunks:
+        return {"chunks": 0}
+    sizes = sorted(c["n_tokens"] for c in chunks)
+    per_doc: dict[str, int] = {}
+    for c in chunks:
+        per_doc[c["doc"]] = per_doc.get(c["doc"], 0) + 1
+    return {
+        "chunks": len(chunks),
+        "docs": len(per_doc),
+        "avg_tokens": round(sum(sizes) / len(sizes), 1),
+        "min_tokens": sizes[0],
+        "median_tokens": sizes[len(sizes) // 2],
+        "max_tokens": sizes[-1],
+        "tiny_chunks_under_50": sum(1 for s in sizes if s < 50),
+        "over_limit": sum(1 for s in sizes if s > size),
+        "chunks_per_doc": per_doc,
+    }

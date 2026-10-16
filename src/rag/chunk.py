@@ -29,3 +29,11 @@ def chunk_page(page: dict, size: int = 500, overlap: int = 50, tokenizer=None) -
             break
         start += size - overlap
     return chunks
+
+def chunk_pages(pages: list[dict], size: int = 500, overlap: int = 50, tokenizer=None) -> list[dict]:
+    """Chunk every page of every document."""
+    tokenizer = tokenizer or get_tokenizer()
+    chunks = []
+    for page in pages:
+        chunks.extend(chunk_page(page, size, overlap, tokenizer))
+    return chunks

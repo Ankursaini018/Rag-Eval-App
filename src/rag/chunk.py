@@ -1,6 +1,9 @@
 """Cut pages into overlapping chunks of a fixed number of tokens."""
 from .tokens import get_tokenizer
 
+def make_chunk_id(doc: str, page: int, index: int) -> str:
+    """Readable and stable: the same input always gives the same ID. 'handbook.pdf::p3::c1'"""
+    return f"{doc}::p{page}::c{index}"
 
 def chunk_page(page: dict, size: int = 500, overlap: int = 50, tokenizer=None) -> list[dict]:
     """Slide a window of `size` tokens over the page, moving forward by size - overlap each time.
@@ -15,6 +18,7 @@ def chunk_page(page: dict, size: int = 500, overlap: int = 50, tokenizer=None) -
     while start < len(spans):
         window = spans[start:start + size]
         chunks.append({
+            "chunk_id": make_chunk_id(page["doc"], page["page"], len(chunks)),
             "doc": page["doc"],
             "page": page["page"],
             "index": len(chunks),                                  # 0, 1, 2 ... within this page

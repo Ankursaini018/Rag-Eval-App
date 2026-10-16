@@ -24,3 +24,10 @@ One entry per day: what I built, what surprised me, what I'd explain in an inter
   2. <e.g. "doc Y is a scan with no text"> -> removed / needs OCR
 - Surprise: 
 - Why headers/footers hurt search: <your words>
+
+## Day 4: chunking
+- A token is: <your words>. Why not count words: <...>
+- Overlap exists because: <your words>
+- My numbers (size 500, overlap 50): <N chunks, avg tokens, tiny chunks>
+- A chunk I read that looks bad (cut mid-sentence? mostly code?): <doc, page, what's wrong>
+- A guess for Day 15: will smaller or larger chunks retrieve better, and why?

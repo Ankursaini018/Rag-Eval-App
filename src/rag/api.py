@@ -1,0 +1,27 @@
+"""The web API.   Run:  uvicorn rag.api:app --reload --app-dir src     then open http://localhost:8000/docs"""
+import logging
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
+
+from .search import search
+
+log = logging.getLogger("rag.api")
+app = FastAPI(title="RAG app with evals")
+
+
+class SearchRequest(BaseModel):
+    query: str = Field(min_length=1, max_length=1000)
+    k: int = Field(default=5, ge=1, le=20)
+
+
+@app.post("/search")
+def search_endpoint(req: SearchRequest) -> dict:
+    """Return the k chunks closest in meaning to the query. (A plain `def`, not `async def`:
+    embedding blocks the CPU, and FastAPI runs plain functions in a thread pool for us.)"""
+    try:
+        hits = search(req.query, req.k)
+    except Exception:
+        log.exception("search failed")
+        raise HTTPException(status_code=503, detail="search backend unavailable")   # no internals leaked
+    return {"query": req.query, "k": req.k, "hits": [h.to_dict() for h in hits]}

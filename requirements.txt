@@ -5,3 +5,6 @@ pypdf
 beautifulsoup4
 reportlab
 qdrant-client
+fastapi
+uvicorn[standard]
+httpx

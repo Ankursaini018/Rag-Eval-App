@@ -4,3 +4,4 @@ pytest
 pypdf
 beautifulsoup4
 reportlab
+qdrant-client

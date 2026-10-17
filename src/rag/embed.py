@@ -47,3 +47,14 @@ def embed_cached(texts: list[str], cache_path: str | Path) -> np.ndarray:
     path.parent.mkdir(parents=True, exist_ok=True)
     np.savez(path, key=key, vectors=vectors)
     return vectors
+
+def embed_chunks(chunks: list[dict], batch_size: int = 64) -> np.ndarray:
+    """Embed the text of every chunk, in batches. Row i of the result belongs to chunks[i].
+
+    Batching = sending 64 chunks through the model at once. It is much faster than one at a time
+    (the model does the maths for all 64 together) while keeping memory use small."""
+    if not chunks:
+        return np.zeros((0, 384), dtype=np.float32)
+    vectors = embed_texts([c["text"] for c in chunks], batch_size=batch_size)
+    assert len(vectors) == len(chunks), "one vector per chunk"
+    return vectors

@@ -8,3 +8,6 @@ qdrant-client
 fastapi
 uvicorn[standard]
 httpx
+python-dotenv
+anthropic
+openai

@@ -43,3 +43,22 @@ def test_no_hits_refuses_without_calling_the_llm(monkeypatch):
 def test_prompt_contains_the_exact_refusal_sentence():
     from rag.prompts import REFUSAL, SYSTEM_PROMPT
     assert REFUSAL in SYSTEM_PROMPT
+
+def test_parse_citation_numbers():
+    parse = generate.parse_citation_numbers
+    assert parse("A [1]. B [2][3]. C [1, 2].", 3) == [1, 2, 3]
+    assert parse("Invented source [9] and real [2].", 3) == [2]     # [9] does not exist -> ignored
+    assert parse("No citations here.", 3) == []
+    assert parse("[0] is not a passage either", 3) == []
+
+
+def test_citations_point_at_the_real_chunks(monkeypatch):
+    monkeypatch.setattr(generate, "complete", fake_llm("Shipping is free [2]."))
+    out = generate.answer_question("Is shipping free?", HITS)
+    assert out["citations"] == [{"n": 2, "chunk_id": "b::p4::c1", "doc": "b.md", "page": 4,
+                                 "text": "Shipping is free."}]
+
+
+def test_refusal_has_no_citations(monkeypatch):
+    monkeypatch.setattr(generate, "complete", fake_llm("I don't know based on the provided documents."))
+    assert generate.answer_question("q", HITS)["citations"] == []

@@ -52,4 +52,5 @@ def ask_endpoint(req: AskRequest) -> dict:
     except Exception:
         log.exception("answer generation failed")
         raise HTTPException(status_code=503, detail="answer generation failed")
-    return {"question": req.question, "answer": out["answer"], "retrieved": [h.to_dict() for h in hits]}
+    return {"question": req.question, "answer": out["answer"], "refused": out["refused"],
+            "retrieved": [h.to_dict() for h in hits]}

@@ -1,10 +1,13 @@
 """The words we send to the LLM. Kept in one file so prompt changes are easy to find, review and compare."""
 
-SYSTEM_PROMPT = """You answer questions using ONLY the numbered context passages provided by the user.
+REFUSAL = "I don't know based on the provided documents."
+
+SYSTEM_PROMPT = f"""You answer questions using ONLY the numbered context passages provided by the user.
 Rules:
 1. Use only information that is in the passages. Do not use outside knowledge, even if you are sure of the answer.
 2. After every claim, cite the passage it came from with its number in square brackets, like [1] or [2][3].
-3. Be concise and direct."""
+3. If the passages do not contain the answer, reply exactly: {REFUSAL}
+4. Be concise and direct."""
 
 
 def build_context(hits: list) -> str:

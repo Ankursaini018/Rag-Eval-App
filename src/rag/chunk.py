@@ -1,11 +1,12 @@
 """Cut pages into overlapping chunks of a fixed number of tokens."""
+from .config import CHUNK_OVERLAP, CHUNK_SIZE
 from .tokens import get_tokenizer
 
 def make_chunk_id(doc: str, page: int, index: int) -> str:
     """Readable and stable: the same input always gives the same ID. 'handbook.pdf::p3::c1'"""
     return f"{doc}::p{page}::c{index}"
 
-def chunk_page(page: dict, size: int = 500, overlap: int = 50, tokenizer=None) -> list[dict]:
+def chunk_page(page: dict, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP, tokenizer=None) -> list[dict]:
     """Slide a window of `size` tokens over the page, moving forward by size - overlap each time.
     Chunks never cross a page boundary, so every chunk belongs to exactly one (doc, page)."""
     if size <= 0 or overlap < 0 or overlap >= size:
@@ -30,7 +31,7 @@ def chunk_page(page: dict, size: int = 500, overlap: int = 50, tokenizer=None) -
         start += size - overlap
     return chunks
 
-def chunk_pages(pages: list[dict], size: int = 500, overlap: int = 50, tokenizer=None) -> list[dict]:
+def chunk_pages(pages: list[dict], size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP, tokenizer=None) -> list[dict]:
     """Chunk every page of every document."""
     tokenizer = tokenizer or get_tokenizer()
     chunks = []
@@ -38,7 +39,7 @@ def chunk_pages(pages: list[dict], size: int = 500, overlap: int = 50, tokenizer
         chunks.extend(chunk_page(page, size, overlap, tokenizer))
     return chunks
 
-def chunk_stats(chunks: list[dict], size: int = 500) -> dict:
+def chunk_stats(chunks: list[dict], size: int = CHUNK_SIZE) -> dict:
     """Numbers that tell you whether chunking behaved."""
     if not chunks:
         return {"chunks": 0}

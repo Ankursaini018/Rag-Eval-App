@@ -1,13 +1,11 @@
 """Qdrant (the vector database): create a collection, load chunks, run searches."""
-import os
 import uuid
 from functools import lru_cache
 
 from qdrant_client import QdrantClient, models
 
-QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")   # ":memory:" = throwaway, for tests
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY") or None
-DEFAULT_COLLECTION = os.getenv("COLLECTION", "chunks_500")
+from .config import COLLECTION as DEFAULT_COLLECTION  # noqa: F401
+from .config import QDRANT_API_KEY, QDRANT_URL
 
 
 @lru_cache(maxsize=1)

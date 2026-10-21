@@ -8,13 +8,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from rag.config import CHUNK_SIZE  # noqa: E402
 from rag.embed import embed_chunks  # noqa: E402
 from rag.parse import read_jsonl  # noqa: E402
 from rag.store import get_client, index_chunks  # noqa: E402
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--size", type=int, default=500, help="which chunks_<size>.jsonl to load")
+    ap.add_argument("--size", type=int, default=CHUNK_SIZE, help="which chunks_<size>.jsonl to load")
     ap.add_argument("--collection", default=None, help="default: chunks_<size>")
     args = ap.parse_args()
 

@@ -7,10 +7,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from rag.config import ASK_TOP_K as TOP_K  # noqa: E402
 from rag.generate import answer_question  # noqa: E402
 from rag.search import search  # noqa: E402
 
-TOP_K = 5
 
 
 def run(questions: list[str], search_fn=search, answer_fn=answer_question) -> str:

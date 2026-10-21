@@ -4,10 +4,8 @@ from pathlib import Path
 
 import numpy as np
 
-MODEL_NAME = "BAAI/bge-small-en-v1.5"  # small, fast on CPU, 384-dimensional vectors
-# bge models are trained so that a SEARCH QUERY gets this instruction in front of it.
-# Documents/snippets get no prefix.
-QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
+from .config import EMBED_MODEL as MODEL_NAME  # noqa: F401  (name kept: tokens.py and tests import it)
+from .config import QUERY_PREFIX
 
 _model = None
 

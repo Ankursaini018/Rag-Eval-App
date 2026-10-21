@@ -4,6 +4,7 @@ import logging
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
+from .config import ASK_TOP_K, SEARCH_TOP_K
 from .generate import answer_question
 from .llm import LLMConfigError
 from .search import search
@@ -14,14 +15,11 @@ app = FastAPI(title="RAG app with evals")
 
 class SearchRequest(BaseModel):
     query: str = Field(min_length=1, max_length=1000)
-    k: int = Field(default=5, ge=1, le=20)
+    k: int = Field(default=SEARCH_TOP_K, ge=1, le=20)
 
 
 class AskRequest(BaseModel):
     question: str = Field(min_length=1, max_length=1000)
-
-
-ASK_TOP_K = 5   # how many chunks the LLM gets to read (Day 7 moves this into config)
 
 
 @app.post("/search")
@@ -53,4 +51,4 @@ def ask_endpoint(req: AskRequest) -> dict:
         log.exception("answer generation failed")
         raise HTTPException(status_code=503, detail="answer generation failed")
     return {"question": req.question, "answer": out["answer"], "refused": out["refused"],
-        "citations": out["citations"], "retrieved": [h.to_dict() for h in hits]}
+            "citations": out["citations"], "retrieved": [h.to_dict() for h in hits]}

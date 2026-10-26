@@ -1,6 +1,7 @@
 """Score a retriever on the golden set (recall@1/3/5 and MRR). Needs Qdrant running for 'vector'.
 Run:  python scripts/run_retrieval_eval.py --retriever vector
-      python scripts/run_retrieval_eval.py --retriever vector --collection chunks_500 --show-misses"""
+      python scripts/run_retrieval_eval.py --retriever vector --show-misses
+      python scripts/run_retrieval_eval.py --retriever vector --out results/baseline_retrieval.json"""
 import argparse
 import sys
 from pathlib import Path
@@ -9,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from rag.golden import load_golden, validate_entries  # noqa: E402
+from rag.results_io import save_result  # noqa: E402
 from rag.retrieval_eval import DEPTH, evaluate_retriever, format_table  # noqa: E402
 from rag.retrievers import build_retriever  # noqa: E402
 
@@ -19,6 +21,7 @@ if __name__ == "__main__":
     ap.add_argument("--golden", default=str(ROOT / "data" / "golden.jsonl"))
     ap.add_argument("--depth", type=int, default=DEPTH, help="chunks fetched per question")
     ap.add_argument("--show-misses", action="store_true", help="list questions with recall@5 below 1")
+    ap.add_argument("--out", help="save the full result as JSON, e.g. results/baseline_retrieval.json")
     args = ap.parse_args()
 
     entries = load_golden(args.golden)
@@ -35,3 +38,5 @@ if __name__ == "__main__":
         for r in result["rows"]:
             if r["recall@5"] < 1:
                 print(f"  {r['id']} [{r['type']}] recall@5={r['recall@5']:.2f}  {r['question']}")
+    if args.out:
+        print(f"\nsaved {save_result(result, args.out).relative_to(ROOT)}")

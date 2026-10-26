@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from rag.golden import load_golden, validate_entries  # noqa: E402
-from rag.results_io import save_result  # noqa: E402
+from rag.results_io import save_result, write_csv  # noqa: E402
 from rag.retrieval_eval import DEPTH, evaluate_retriever, format_table  # noqa: E402
 from rag.retrievers import build_retriever  # noqa: E402
 
@@ -22,6 +22,7 @@ if __name__ == "__main__":
     ap.add_argument("--depth", type=int, default=DEPTH, help="chunks fetched per question")
     ap.add_argument("--show-misses", action="store_true", help="list questions with recall@5 below 1")
     ap.add_argument("--out", help="save the full result as JSON, e.g. results/baseline_retrieval.json")
+    ap.add_argument("--csv", help="also write one row per question, e.g. results/baseline_retrieval.csv")
     args = ap.parse_args()
 
     entries = load_golden(args.golden)
@@ -40,3 +41,6 @@ if __name__ == "__main__":
                 print(f"  {r['id']} [{r['type']}] recall@5={r['recall@5']:.2f}  {r['question']}")
     if args.out:
         print(f"\nsaved {save_result(result, args.out).relative_to(ROOT)}")
+
+    if args.csv:
+        print(f"saved {write_csv(result, args.csv).relative_to(ROOT)}")

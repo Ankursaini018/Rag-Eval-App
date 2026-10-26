@@ -1,0 +1,2585 @@
+{
+  "retriever": "vector[default]",
+  "ks": [
+    1,
+    3,
+    5
+  ],
+  "depth": 10,
+  "skipped_unanswerable": 6,
+  "summary": {
+    "n": 44,
+    "recall@1": 0.5909,
+    "recall@3": 0.8068,
+    "recall@5": 0.8636,
+    "mrr": 0.7743
+  },
+  "by_type": {
+    "multi_chunk": {
+      "n": 7,
+      "recall@1": 0.4286,
+      "recall@3": 0.6429,
+      "recall@5": 0.7143,
+      "mrr": 0.9286
+    },
+    "paraphrase": {
+      "n": 10,
+      "recall@1": 0.5,
+      "recall@3": 0.7,
+      "recall@5": 0.8,
+      "mrr": 0.6375
+    },
+    "single_fact": {
+      "n": 17,
+      "recall@1": 0.5882,
+      "recall@3": 0.8235,
+      "recall@5": 0.8824,
+      "mrr": 0.7173
+    },
+    "tricky": {
+      "n": 10,
+      "recall@1": 0.8,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "mrr": 0.9
+    }
+  },
+  "rows": [
+    {
+      "id": "q001",
+      "type": "single_fact",
+      "question": "What does FastAPI do with a BackgroundTasks object passed to a path operation function?",
+      "gold": [
+        [
+          "background-tasks.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "background-tasks.md",
+          2
+        ],
+        [
+          "background-tasks.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "path-operation-configuration.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "path-operation-configuration.md",
+          2
+        ],
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "path-params.md",
+          1
+        ],
+        [
+          "path-params.md",
+          2
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 0.5
+    },
+    {
+      "id": "q002",
+      "type": "single_fact",
+      "question": "What file makes a directory a Python package in the FastAPI multiple-files example?",
+      "gold": [
+        [
+          "bigger-applications.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "bigger-applications.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          1
+        ],
+        [
+          "request-files.md",
+          1
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "index.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ],
+        [
+          "request-files.md",
+          3
+        ],
+        [
+          "request-forms-and-files.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q003",
+      "type": "single_fact",
+      "question": "Where should Field be imported from when defining Pydantic model fields?",
+      "gold": [
+        [
+          "body-fields.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-fields.md",
+          1
+        ],
+        [
+          "request-form-models.md",
+          1
+        ],
+        [
+          "header-param-models.md",
+          1
+        ],
+        [
+          "query-param-models.md",
+          1
+        ],
+        [
+          "extra-models.md",
+          3
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "cookie-param-models.md",
+          1
+        ],
+        [
+          "body-updates.md",
+          2
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ],
+        [
+          "schema-extra-example.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q004",
+      "type": "single_fact",
+      "question": "What happens when FastAPI receives multiple Pydantic model parameters in the request body?",
+      "gold": [
+        [
+          "body-multiple-params.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "body.md",
+          3
+        ],
+        [
+          "header-param-models.md",
+          1
+        ],
+        [
+          "query-param-models.md",
+          1
+        ],
+        [
+          "cookie-param-models.md",
+          1
+        ],
+        [
+          "request-form-models.md",
+          1
+        ],
+        [
+          "body-multiple-params.md",
+          2
+        ],
+        [
+          "sql-databases.md",
+          3
+        ],
+        [
+          "response-model.md",
+          1
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "body-fields.md",
+          1
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "rr": 0.1111111111111111
+    },
+    {
+      "id": "q005",
+      "type": "single_fact",
+      "question": "What happens to duplicate values when a FastAPI field is declared as a set of strings?",
+      "gold": [
+        [
+          "body-nested-models.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "query-params-str-validations.md",
+          3
+        ],
+        [
+          "stream-json-lines.md",
+          2
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "sql-databases.md",
+          2
+        ],
+        [
+          "body-nested-models.md",
+          1
+        ],
+        [
+          "body-multiple-params.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          6
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "rr": 0.16666666666666666
+    },
+    {
+      "id": "q006",
+      "type": "single_fact",
+      "question": "Which FastAPI parameter type must you use to declare a cookie parameter instead of a query parameter?",
+      "gold": [
+        [
+          "cookie-params.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "cookie-params.md",
+          1
+        ],
+        [
+          "cookie-param-models.md",
+          1
+        ],
+        [
+          "header-params.md",
+          1
+        ],
+        [
+          "schema-extra-example.md",
+          3
+        ],
+        [
+          "cookie-param-models.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          1
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "path-params-numeric-validations.md",
+          1
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "query-param-models.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q007",
+      "type": "single_fact",
+      "question": "What three components make up an origin in CORS?",
+      "gold": [
+        [
+          "cors.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "cors.md",
+          1
+        ],
+        [
+          "cors.md",
+          2
+        ],
+        [
+          "middleware.md",
+          2
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          4
+        ],
+        [
+          "bigger-applications.md",
+          6
+        ],
+        [
+          "cookie-param-models.md",
+          2
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ],
+        [
+          "bigger-applications.md",
+          3
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q008",
+      "type": "single_fact",
+      "question": "What value does Python assign to __name__ when a module is run directly?",
+      "gold": [
+        [
+          "debugging.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "debugging.md",
+          1
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "path-params.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          4
+        ],
+        [
+          "path-params-numeric-validations.md",
+          2
+        ],
+        [
+          "bigger-applications.md",
+          5
+        ],
+        [
+          "path-params.md",
+          3
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ],
+        [
+          "body-multiple-params.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          6
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q009",
+      "type": "single_fact",
+      "question": "What does jsonable_encoder return when given a Pydantic model?",
+      "gold": [
+        [
+          "encoder.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "encoder.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          3
+        ],
+        [
+          "response-model.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ],
+        [
+          "schema-extra-example.md",
+          1
+        ],
+        [
+          "extra-models.md",
+          3
+        ],
+        [
+          "stream-json-lines.md",
+          2
+        ],
+        [
+          "sql-databases.md",
+          3
+        ],
+        [
+          "cookie-param-models.md",
+          1
+        ],
+        [
+          "body-updates.md",
+          2
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q010",
+      "type": "single_fact",
+      "question": "How is datetime.timedelta represented in FastAPI requests and responses?",
+      "gold": [
+        [
+          "extra-data-types.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "index.md",
+          1
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "extra-data-types.md",
+          1
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "schema-extra-example.md",
+          3
+        ],
+        [
+          "encoder.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          3
+        ],
+        [
+          "response-model.md",
+          1
+        ],
+        [
+          "response-model.md",
+          3
+        ],
+        [
+          "response-status-code.md",
+          2
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 0.3333333333333333
+    },
+    {
+      "id": "q011",
+      "type": "multi_chunk",
+      "question": "When should you use FastAPI BackgroundTasks instead of a larger background-job system such as Celery?",
+      "gold": [
+        [
+          "background-tasks.md",
+          1
+        ],
+        [
+          "background-tasks.md",
+          2
+        ]
+      ],
+      "retrieved": [
+        [
+          "background-tasks.md",
+          2
+        ],
+        [
+          "background-tasks.md",
+          1
+        ],
+        [
+          "path-params.md",
+          4
+        ],
+        [
+          "index.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "sql-databases.md",
+          6
+        ],
+        [
+          "first-steps.md",
+          1
+        ],
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "testing.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ]
+      ],
+      "recall@1": 0.5,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q012",
+      "type": "multi_chunk",
+      "question": "How does APIRouter help organize a larger FastAPI application, and where should a router prefix be placed when defining item endpoints?",
+      "gold": [
+        [
+          "bigger-applications.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ]
+      ],
+      "retrieved": [
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ],
+        [
+          "bigger-applications.md",
+          6
+        ],
+        [
+          "bigger-applications.md",
+          3
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "bigger-applications.md",
+          4
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "path-params.md",
+          2
+        ],
+        [
+          "path-operation-configuration.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          1
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "rr": 0.5
+    },
+    {
+      "id": "q013",
+      "type": "multi_chunk",
+      "question": "How can nested Pydantic models be used for lists of objects, and what additional nesting can be defined inside those models?",
+      "gold": [
+        [
+          "body-nested-models.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-nested-models.md",
+          1
+        ],
+        [
+          "extra-models.md",
+          3
+        ],
+        [
+          "body-fields.md",
+          1
+        ],
+        [
+          "query-param-models.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ],
+        [
+          "request-form-models.md",
+          1
+        ],
+        [
+          "cookie-param-models.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          3
+        ],
+        [
+          "header-param-models.md",
+          1
+        ],
+        [
+          "schema-extra-example.md",
+          1
+        ]
+      ],
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q014",
+      "type": "multi_chunk",
+      "question": "How does FastAPI handle a partial update when using the technique described for PATCH requests?",
+      "gold": [
+        [
+          "body-updates.md",
+          1
+        ],
+        [
+          "body-updates.md",
+          2
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-updates.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "sql-databases.md",
+          6
+        ],
+        [
+          "handling-errors.md",
+          2
+        ],
+        [
+          "path-operation-configuration.md",
+          2
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "first-steps.md",
+          1
+        ],
+        [
+          "index.md",
+          1
+        ]
+      ],
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "rr": 1.0
+    },
+    {
+      "id": "q015",
+      "type": "multi_chunk",
+      "question": "How does FastAPI use response_model when the declared return type differs from the response model, and how can it prevent a password from appearing in the response?",
+      "gold": [
+        [
+          "response-model.md",
+          1
+        ],
+        [
+          "response-model.md",
+          2
+        ]
+      ],
+      "retrieved": [
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "response-model.md",
+          1
+        ],
+        [
+          "response-model.md",
+          3
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "response-model.md",
+          4
+        ],
+        [
+          "extra-models.md",
+          2
+        ],
+        [
+          "response-status-code.md",
+          1
+        ],
+        [
+          "extra-models.md",
+          3
+        ],
+        [
+          "stream-json-lines.md",
+          2
+        ],
+        [
+          "sql-databases.md",
+          3
+        ]
+      ],
+      "recall@1": 0.5,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q021",
+      "type": "single_fact",
+      "question": "What command should be used to run a FastAPI application in production?",
+      "gold": [
+        [
+          "first-steps.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "first-steps.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "index.md",
+          1
+        ],
+        [
+          "testing.md",
+          1
+        ],
+        [
+          "index.md",
+          3
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "debugging.md",
+          1
+        ],
+        [
+          "sql-databases.md",
+          6
+        ],
+        [
+          "middleware.md",
+          1
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 0.5
+    },
+    {
+      "id": "q022",
+      "type": "single_fact",
+      "question": "How should you send an HTTP error response when using FastAPI's HTTPException?",
+      "gold": [
+        [
+          "handling-errors.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "handling-errors.md",
+          2
+        ],
+        [
+          "handling-errors.md",
+          3
+        ],
+        [
+          "handling-errors.md",
+          1
+        ],
+        [
+          "response-status-code.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "server-sent-events.md",
+          1
+        ],
+        [
+          "stream-json-lines.md",
+          2
+        ],
+        [
+          "testing.md",
+          1
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 0.3333333333333333
+    },
+    {
+      "id": "q023",
+      "type": "single_fact",
+      "question": "Which decorator is used to create an HTTP middleware in FastAPI?",
+      "gold": [
+        [
+          "middleware.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "middleware.md",
+          2
+        ],
+        [
+          "testing.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "frontend.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "handling-errors.md",
+          2
+        ],
+        [
+          "index.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q024",
+      "type": "single_fact",
+      "question": "What Python type can you declare for a FastAPI path parameter to make it an integer?",
+      "gold": [
+        [
+          "path-params.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "path-params.md",
+          1
+        ],
+        [
+          "path-params-numeric-validations.md",
+          1
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "path-params.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          1
+        ],
+        [
+          "path-operation-configuration.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "header-params.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q025",
+      "type": "single_fact",
+      "question": "What default value makes a FastAPI query parameter optional?",
+      "gold": [
+        [
+          "query-params.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "query-params-str-validations.md",
+          2
+        ],
+        [
+          "query-params.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          1
+        ],
+        [
+          "query-params.md",
+          1
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "query-params-str-validations.md",
+          3
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "body-multiple-params.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          5
+        ],
+        [
+          "query-params-str-validations.md",
+          4
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 1.0,
+      "rr": 0.25
+    },
+    {
+      "id": "q026",
+      "type": "paraphrase",
+      "question": "How can you turn a Pydantic object into ordinary Python data that can be passed around as a dictionary?",
+      "gold": [
+        [
+          "extra-models.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-nested-models.md",
+          3
+        ],
+        [
+          "body-fields.md",
+          1
+        ],
+        [
+          "extra-models.md",
+          3
+        ],
+        [
+          "schema-extra-example.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ],
+        [
+          "request-form-models.md",
+          1
+        ],
+        [
+          "extra-data-types.md",
+          1
+        ],
+        [
+          "encoder.md",
+          1
+        ],
+        [
+          "body-updates.md",
+          2
+        ],
+        [
+          "response-model.md",
+          1
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "rr": 0.0
+    },
+    {
+      "id": "q027",
+      "type": "paraphrase",
+      "question": "If an API also serves a built frontend, which one takes precedence when a request matches both a normal API route and a frontend file?",
+      "gold": [
+        [
+          "frontend.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "frontend.md",
+          1
+        ],
+        [
+          "frontend.md",
+          3
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "bigger-applications.md",
+          6
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "frontend.md",
+          2
+        ],
+        [
+          "static-files.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          3
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ],
+        [
+          "testing.md",
+          2
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q028",
+      "type": "paraphrase",
+      "question": "Which metadata field identifies the release number of your own API application rather than the OpenAPI specification itself?",
+      "gold": [
+        [
+          "metadata.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "metadata.md",
+          1
+        ],
+        [
+          "schema-extra-example.md",
+          3
+        ],
+        [
+          "schema-extra-example.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          3
+        ],
+        [
+          "path-params.md",
+          2
+        ],
+        [
+          "schema-extra-example.md",
+          4
+        ],
+        [
+          "body.md",
+          2
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "metadata.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          4
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q029",
+      "type": "paraphrase",
+      "question": "Where should an HTTP response code be configured when defining a FastAPI endpoint?",
+      "gold": [
+        [
+          "path-operation-configuration.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "response-status-code.md",
+          1
+        ],
+        [
+          "path-operation-configuration.md",
+          1
+        ],
+        [
+          "handling-errors.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "path-operation-configuration.md",
+          2
+        ],
+        [
+          "response-status-code.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "testing.md",
+          1
+        ],
+        [
+          "handling-errors.md",
+          3
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 0.5
+    },
+    {
+      "id": "q030",
+      "type": "paraphrase",
+      "question": "How can several related URL filter values be represented as one reusable validation object?",
+      "gold": [
+        [
+          "query-param-models.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-nested-models.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          4
+        ],
+        [
+          "body-multiple-params.md",
+          2
+        ],
+        [
+          "response-model.md",
+          3
+        ],
+        [
+          "query-params-str-validations.md",
+          5
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "path-params-numeric-validations.md",
+          2
+        ],
+        [
+          "query-param-models.md",
+          1
+        ],
+        [
+          "query-params-str-validations.md",
+          6
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "rr": 0.125
+    },
+    {
+      "id": "q031",
+      "type": "paraphrase",
+      "question": "What must be installed before an API can accept files uploaded by clients?",
+      "gold": [
+        [
+          "request-files.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "request-files.md",
+          1
+        ],
+        [
+          "request-files.md",
+          3
+        ],
+        [
+          "request-forms-and-files.md",
+          1
+        ],
+        [
+          "static-files.md",
+          1
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "frontend.md",
+          1
+        ],
+        [
+          "index.md",
+          3
+        ],
+        [
+          "bigger-applications.md",
+          6
+        ],
+        [
+          "cors.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          4
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q032",
+      "type": "paraphrase",
+      "question": "Which HTTP number normally indicates that a new database record was successfully created?",
+      "gold": [
+        [
+          "response-status-code.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "response-status-code.md",
+          2
+        ],
+        [
+          "response-status-code.md",
+          1
+        ],
+        [
+          "sql-databases.md",
+          2
+        ],
+        [
+          "handling-errors.md",
+          1
+        ],
+        [
+          "sql-databases.md",
+          6
+        ],
+        [
+          "sql-databases.md",
+          5
+        ],
+        [
+          "handling-errors.md",
+          3
+        ],
+        [
+          "body-updates.md",
+          2
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "sql-databases.md",
+          4
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 0.5
+    },
+    {
+      "id": "q033",
+      "type": "paraphrase",
+      "question": "What mechanism lets a browser receive incremental updates pushed from a FastAPI server over HTTP?",
+      "gold": [
+        [
+          "server-sent-events.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-updates.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "server-sent-events.md",
+          1
+        ],
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "sql-databases.md",
+          6
+        ],
+        [
+          "first-steps.md",
+          1
+        ],
+        [
+          "frontend.md",
+          1
+        ],
+        [
+          "testing.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 1.0,
+      "rr": 0.25
+    },
+    {
+      "id": "q034",
+      "type": "paraphrase",
+      "question": "What does mounting a static-file application under a URL prefix allow that application to handle?",
+      "gold": [
+        [
+          "static-files.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "static-files.md",
+          1
+        ],
+        [
+          "frontend.md",
+          1
+        ],
+        [
+          "frontend.md",
+          3
+        ],
+        [
+          "bigger-applications.md",
+          1
+        ],
+        [
+          "frontend.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "bigger-applications.md",
+          6
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "request-files.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q035",
+      "type": "paraphrase",
+      "question": "How can an endpoint begin delivering a sequence of JSON objects before the complete sequence has been produced?",
+      "gold": [
+        [
+          "stream-json-lines.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "stream-json-lines.md",
+          1
+        ],
+        [
+          "stream-json-lines.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          3
+        ],
+        [
+          "schema-extra-example.md",
+          1
+        ],
+        [
+          "server-sent-events.md",
+          2
+        ],
+        [
+          "background-tasks.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "body.md",
+          2
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "schema-extra-example.md",
+          3
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q036",
+      "type": "tricky",
+      "question": "If a FastAPI background task is supposed to notify a client, at what point relative to the HTTP response does the task actually run?",
+      "gold": [
+        [
+          "background-tasks.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "background-tasks.md",
+          2
+        ],
+        [
+          "background-tasks.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "server-sent-events.md",
+          1
+        ],
+        [
+          "response-status-code.md",
+          1
+        ],
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "testing.md",
+          1
+        ],
+        [
+          "path-operation-configuration.md",
+          2
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 0.5
+    },
+    {
+      "id": "q037",
+      "type": "tricky",
+      "question": "In a multi-file FastAPI project, what specifically makes a directory a Python package rather than merely a directory containing modules?",
+      "gold": [
+        [
+          "bigger-applications.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "bigger-applications.md",
+          1
+        ],
+        [
+          "request-files.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "bigger-applications.md",
+          4
+        ],
+        [
+          "path-params.md",
+          2
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "index.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q038",
+      "type": "tricky",
+      "question": "Suppose an existing item has a stored `tax` value of 20.2, but a PUT request omits `tax`. Does PUT preserve 20.2 automatically?",
+      "gold": [
+        [
+          "body-updates.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-updates.md",
+          1
+        ],
+        [
+          "response-model.md",
+          5
+        ],
+        [
+          "body-updates.md",
+          2
+        ],
+        [
+          "body-multiple-params.md",
+          2
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "request-files.md",
+          1
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "handling-errors.md",
+          3
+        ],
+        [
+          "body.md",
+          3
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q039",
+      "type": "tricky",
+      "question": "A frontend and backend both use `localhost`, but one runs on port 8080 and the other on port 80. Does CORS consider them the same origin merely because the hostname matches?",
+      "gold": [
+        [
+          "cors.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "cors.md",
+          1
+        ],
+        [
+          "frontend.md",
+          1
+        ],
+        [
+          "cors.md",
+          2
+        ],
+        [
+          "frontend.md",
+          2
+        ],
+        [
+          "frontend.md",
+          3
+        ],
+        [
+          "middleware.md",
+          2
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "static-files.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          6
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q040",
+      "type": "tricky",
+      "question": "Does FastAPI's `jsonable_encoder()` return a JSON-formatted string ready to be sent as the result of `json.dumps()`?",
+      "gold": [
+        [
+          "encoder.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "encoder.md",
+          1
+        ],
+        [
+          "stream-json-lines.md",
+          2
+        ],
+        [
+          "handling-errors.md",
+          3
+        ],
+        [
+          "stream-json-lines.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          3
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "body-nested-models.md",
+          3
+        ],
+        [
+          "body-updates.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "response-model.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q041",
+      "type": "tricky",
+      "question": "If a FastAPI field uses `datetime.timedelta`, is that value represented as an ISO 8601 string in requests and responses in the same way as `datetime.datetime`?",
+      "gold": [
+        [
+          "extra-data-types.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "extra-data-types.md",
+          1
+        ],
+        [
+          "encoder.md",
+          1
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "body-nested-models.md",
+          3
+        ],
+        [
+          "body-updates.md",
+          1
+        ],
+        [
+          "response-model.md",
+          1
+        ],
+        [
+          "handling-errors.md",
+          3
+        ],
+        [
+          "schema-extra-example.md",
+          3
+        ],
+        [
+          "query-params-str-validations.md",
+          1
+        ],
+        [
+          "body.md",
+          3
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q042",
+      "type": "tricky",
+      "question": "If a parameter is intended to come from an HTTP header but is declared without `Header`, will FastAPI automatically recognize it as a header because of its name?",
+      "gold": [
+        [
+          "header-params.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "body.md",
+          3
+        ],
+        [
+          "header-params.md",
+          1
+        ],
+        [
+          "header-param-models.md",
+          1
+        ],
+        [
+          "schema-extra-example.md",
+          3
+        ],
+        [
+          "query-params-str-validations.md",
+          3
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "path-params.md",
+          1
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "response-model.md",
+          3
+        ],
+        [
+          "first-steps.md",
+          5
+        ]
+      ],
+      "recall@1": 0.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 0.5
+    },
+    {
+      "id": "q043",
+      "type": "tricky",
+      "question": "Does FastAPI middleware execute only before a path operation, or can it also modify a response after that path operation has generated it?",
+      "gold": [
+        [
+          "middleware.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "middleware.md",
+          1
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "path-operation-configuration.md",
+          2
+        ],
+        [
+          "middleware.md",
+          2
+        ],
+        [
+          "bigger-applications.md",
+          3
+        ],
+        [
+          "path-operation-configuration.md",
+          1
+        ],
+        [
+          "background-tasks.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          4
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "path-params.md",
+          2
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q044",
+      "type": "tricky",
+      "question": "When reading an `UploadFile` inside an `async def` path operation, can you call `myfile.read()` without `await` and still use the asynchronous file method correctly?",
+      "gold": [
+        [
+          "request-files.md",
+          2
+        ]
+      ],
+      "retrieved": [
+        [
+          "request-files.md",
+          2
+        ],
+        [
+          "first-steps.md",
+          5
+        ],
+        [
+          "request-files.md",
+          1
+        ],
+        [
+          "stream-json-lines.md",
+          2
+        ],
+        [
+          "request-files.md",
+          3
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "request-forms-and-files.md",
+          1
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "background-tasks.md",
+          2
+        ],
+        [
+          "background-tasks.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q045",
+      "type": "tricky",
+      "question": "If the value returned by a FastAPI endpoint is a dictionary but you want FastAPI to validate and document it as a Pydantic model, should `response_model` be placed on the path operation function's parameter list?",
+      "gold": [
+        [
+          "response-model.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "response-model.md",
+          1
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "body-fields.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          3
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "body.md",
+          2
+        ],
+        [
+          "path-params.md",
+          2
+        ],
+        [
+          "header-param-models.md",
+          1
+        ],
+        [
+          "query-param-models.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q046",
+      "type": "multi_chunk",
+      "question": "How does FastAPI combine typed nested models with list handling when an attribute contains multiple image objects?",
+      "gold": [
+        [
+          "body-nested-models.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-nested-models.md",
+          1
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "response-model.md",
+          3
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "body.md",
+          2
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "schema-extra-example.md",
+          3
+        ],
+        [
+          "body-multiple-params.md",
+          2
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ],
+        [
+          "body.md",
+          3
+        ]
+      ],
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "rr": 1.0
+    },
+    {
+      "id": "q047",
+      "type": "multi_chunk",
+      "question": "How can a FastAPI request body represent structured nested objects while still allowing a top-level collection of those models?",
+      "gold": [
+        [
+          "body-nested-models.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-nested-models.md",
+          1
+        ],
+        [
+          "response-model.md",
+          6
+        ],
+        [
+          "body-multiple-params.md",
+          1
+        ],
+        [
+          "schema-extra-example.md",
+          3
+        ],
+        [
+          "body.md",
+          1
+        ],
+        [
+          "body-multiple-params.md",
+          2
+        ],
+        [
+          "response-model.md",
+          3
+        ],
+        [
+          "body-fields.md",
+          1
+        ],
+        [
+          "response-model.md",
+          2
+        ],
+        [
+          "body.md",
+          2
+        ]
+      ],
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "rr": 1.0
+    },
+    {
+      "id": "q049",
+      "type": "single_fact",
+      "question": "From which package should `Field` be imported when adding validation and metadata to Pydantic model attributes?",
+      "gold": [
+        [
+          "body-fields.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "body-fields.md",
+          1
+        ],
+        [
+          "request-form-models.md",
+          1
+        ],
+        [
+          "header-param-models.md",
+          1
+        ],
+        [
+          "body-nested-models.md",
+          2
+        ],
+        [
+          "query-param-models.md",
+          1
+        ],
+        [
+          "body-updates.md",
+          2
+        ],
+        [
+          "schema-extra-example.md",
+          1
+        ],
+        [
+          "body.md",
+          2
+        ],
+        [
+          "cookie-param-models.md",
+          1
+        ],
+        [
+          "path-params-numeric-validations.md",
+          1
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "q050",
+      "type": "single_fact",
+      "question": "What is the purpose of the `__name__ == \"__main__\"` check in a FastAPI application's Python file?",
+      "gold": [
+        [
+          "debugging.md",
+          1
+        ]
+      ],
+      "retrieved": [
+        [
+          "debugging.md",
+          1
+        ],
+        [
+          "testing.md",
+          2
+        ],
+        [
+          "body.md",
+          3
+        ],
+        [
+          "bigger-applications.md",
+          7
+        ],
+        [
+          "testing.md",
+          1
+        ],
+        [
+          "path-params.md",
+          2
+        ],
+        [
+          "response-status-code.md",
+          2
+        ],
+        [
+          "query-params-str-validations.md",
+          3
+        ],
+        [
+          "index.md",
+          1
+        ],
+        [
+          "bigger-applications.md",
+          2
+        ]
+      ],
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "rr": 1.0
+    }
+  ]
+}

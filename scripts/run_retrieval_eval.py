@@ -1,7 +1,7 @@
 """Score a retriever on the golden set (recall@1/3/5 and MRR). Needs Qdrant running for 'vector'.
 Run:  python scripts/run_retrieval_eval.py --retriever vector
       python scripts/run_retrieval_eval.py --retriever vector --show-misses
-      python scripts/run_retrieval_eval.py --retriever vector --out results/baseline_retrieval.json"""
+      python scripts/run_retrieval_eval.py --retriever vector --out results/x.json --csv results/x.csv"""
 import argparse
 import sys
 from pathlib import Path
@@ -9,10 +9,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from rag import config  # noqa: E402
 from rag.golden import load_golden, validate_entries  # noqa: E402
 from rag.results_io import save_result, write_csv  # noqa: E402
 from rag.retrieval_eval import DEPTH, evaluate_retriever, format_table  # noqa: E402
 from rag.retrievers import build_retriever  # noqa: E402
+from rag.runinfo import describe_run  # noqa: E402
+from rag.store import get_client  # noqa: E402
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
@@ -31,6 +34,7 @@ if __name__ == "__main__":
         sys.exit("golden set is invalid, fix it first:\n  " + "\n  ".join(problems))
 
     result = evaluate_retriever(build_retriever(args.retriever, args.collection), entries, depth=args.depth)
+    result["config"] = describe_run(args.collection or config.COLLECTION, args.golden, get_client())
     print(f"retriever: {result['retriever']}   depth: {result['depth']}   "
           f"scored: {result['summary']['n']}   skipped (unanswerable): {result['skipped_unanswerable']}\n")
     print(format_table(result))
@@ -41,6 +45,5 @@ if __name__ == "__main__":
                 print(f"  {r['id']} [{r['type']}] recall@5={r['recall@5']:.2f}  {r['question']}")
     if args.out:
         print(f"\nsaved {save_result(result, args.out).relative_to(ROOT)}")
-
     if args.csv:
         print(f"saved {write_csv(result, args.csv).relative_to(ROOT)}")

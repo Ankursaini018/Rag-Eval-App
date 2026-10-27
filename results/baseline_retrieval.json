@@ -2581,5 +2581,19 @@
       "recall@5": 1.0,
       "rr": 1.0
     }
-  ]
+  ],
+  "config": {
+    "date": "2026-10-27T17:25:49",
+    "git_commit": "3188847",
+    "python": "3.11.0rc2",
+    "embed_model": "BAAI/bge-small-en-v1.5",
+    "query_prefix": "Represent this sentence for searching relevant passages: ",
+    "chunk_size_tokens": 500,
+    "chunk_overlap_tokens": 50,
+    "collection": "chunks_500",
+    "chunks_in_collection": 102,
+    "top_k_for_answers": 5,
+    "golden_file": "golden.jsonl",
+    "golden_sha256_12": "b722f6173f08"
+  }
 }

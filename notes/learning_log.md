@@ -42,3 +42,7 @@ The project uses:
 - Environment variable: `LLM_REASONING_EFFORT=low`
 
 The same LLM should be used throughout the project so that before-and-after evaluation results remain comparable. Changing the model during the project would make it difficult to determine whether an improvement came from the RAG pipeline changes or from a different language model.
+
+## Day 11 — Baseline retrieval evaluation
+
+The baseline retrieval scores are recall@1 = 0.591, recall@3 = 0.807, recall@5 = 0.864, and MRR = 0.774. The gap between recall@1 and recall@5 shows that the correct page is often retrieved, but it is not always ranked first. The strongest question type was tricky, while multi_chunk was the weakest on recall@5. Looking at the CSV, some of the missed questions appear to be cases where the relevant page was not retrieved in the top five, while others are cases where retrieval found the right page but ranked it lower. This suggests that both finding the correct page and ranking retrieved pages are relevant weaknesses, with recall@5 indicating the larger retrieval-coverage issue. One surprising result is that tricky questions performed better than expected compared with multi_chunk and paraphrase questions. These numbers are the baseline, so they should be treated as the starting point for later analysis rather than as a reason to change the golden set or retrieval configuration.

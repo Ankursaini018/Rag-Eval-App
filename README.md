@@ -13,6 +13,21 @@ Requires Python 3.10+ and Docker.
     pip install -r requirements.txt
     docker compose up -d                                   # starts Qdrant on localhost:6333
 
+## Results
+
+All numbers come from `scripts/run_retrieval_eval.py` on the 50-question golden set
+(44 answerable questions are scored; the 6 unanswerable ones are tested on the answer side).
+Full per-question results are in `results/`.
+
+### Retrieval
+
+| Version | recall@1 | recall@3 | recall@5 | MRR |
+|---|---:|---:|---:|---:|
+| v0.1 baseline (vector search, 500-token chunks) | 0.591 | 0.807 | 0.864 | 0.774 |
+
+Recall@k = fraction of correct source pages found in the top k chunks. MRR = how near the top the
+first correct page appears. See `docs/metrics.md` for details.
+
 ## Build the index
 Put documents (PDF, HTML, Markdown, TXT) in `docs/`, then:
 
